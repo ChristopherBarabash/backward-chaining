@@ -10,6 +10,7 @@ public class Player extends Object{
 
     private final World world;
     private int x, y;
+    private int time = 0;
 
     private Tile tile;
 

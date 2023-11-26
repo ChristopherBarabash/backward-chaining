@@ -9,6 +9,7 @@ public class Main {
         try {
             // Create a 4x4 world
             World world = new World(4, 4);
+            world.setMaxSteps(100);
 
             // Print the game title
             System.out.println("Find the bomb!");

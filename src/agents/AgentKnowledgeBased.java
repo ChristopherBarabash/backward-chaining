@@ -18,7 +18,7 @@ import java.util.LinkedList;
  * H5: Choose the path that surely does not have a danger;
  * H5: If have found the gold get back by the visited path;
  */
-public class AgentHeuristic implements Agent {
+public class AgentKnowledgeBased implements Agent {
     private int w, h;
 
     private boolean debug = true;
@@ -28,20 +28,18 @@ public class AgentHeuristic implements Agent {
 
     private LinkedList<Action> nextActions = new LinkedList<Action>();
 
-
     /**
      * The strategy constructor.
      *
      * @param width  The board width
      * @param height The board height
      */
-    public AgentHeuristic(int width, int height) {
+    public AgentKnowledgeBased(int width, int height) {
         w = width;
         h = height;
         dangers = new double[w][h];
         visited = new boolean[w][h];
         shoot = new boolean[w][h];
-
     }
 
     /**

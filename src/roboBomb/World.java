@@ -11,17 +11,12 @@ import java.util.Random;
 
 public class World {
 
-    private static final int DEFAULT_MAX_STEPS = 200;
-
 
     private final int width;
     private final int height;
     private final int startPosition;
-
-    private int maxSteps = DEFAULT_MAX_STEPS;
-
+    private int maxSteps;
     private HashMap<Integer, Element> items = new HashMap<Integer, Element>();
-
 
     private String agentName;
     private final Player player;
@@ -38,9 +33,7 @@ public class World {
      */
     public World(int width, int height) throws InterruptedException,
             InternalError {
-        if (width == 1 && height == 1) {
-            throw new InternalError("The world size must be greater than 1x1.");
-        }
+
         this.width = width;
         this.height = height;
         // Generate the board matrix (WxH)
@@ -49,15 +42,15 @@ public class World {
             tiles[i] = new Tile(i, width, height);
         }
         // Saves the start position to check the objective
-        startPosition = getIndex(0, height - 1);
+        startPosition = getIndex(0, 0);
         // Set the player
         player = new Player(this);
 
         //PIERWSZY ŚWIAT
         setItem(Element.BOMB, 2,2);
-        setItem(Element.WALL, 1,1);
-        setItem(Element.WALL, 2,1);
-        setItem(Element.WALL, 3,1);
+//        setItem(Element.WALL, 1,1);
+//        setItem(Element.WALL, 2,1);
+//        setItem(Element.WALL, 3,1);
 
     }
 
@@ -101,26 +94,6 @@ public class World {
      */
     public void setMaxSteps(int value) {
         maxSteps = value;
-    }
-
-
-    /**
-     * Sets a pit at given coordinate.
-     * @param x The horizontal coordinate
-     * @param y The vertical coordinate
-     */
-    public void setWall(int x, int y) {
-        setItem(Element.WALL, x, y);
-    }
-
-
-    /**
-     * Sets a Wumpus at given coordinate.
-     * @param x The horizontal position
-     * @param y The vertical position
-     */
-    public void setBomb(int x, int y) {
-        setItem(Element.BOMB, x, y);
     }
 
 

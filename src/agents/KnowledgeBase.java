@@ -1,41 +1,63 @@
 //package agents;
 //
-//import roboBomb.Environment;
-//import roboBomb.Environment.*;
+//
+//
+//import predicateCalculus.Rule;
+//
+//import java.io.FileNotFoundException;
+//import java.io.IOException;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.stream.Collectors;
 //
 //public class KnowledgeBase {
+//	private List<Rule> rules;
 //
-// public Action kbSystem(Perception p) {
-//     int time = 1;
-//     tell(p,time);
-//        Action a = ask(p,time);
-//        time += 1;
-//     return a;
+//	public KnowledgeBase() {
+//		this.rules = new ArrayList<>();
+//	}
+//
+//	public void addRule(Rule rule) {
+//		rules.add(rule);
+//	}
 //
 //
-// }
-// class PositionInTime(){
-//     int time;
-//     int x;
-//     int y;
-//     public PositionInTime(int time, int x, int y){
-//         this.time = time;
-//         this.x = x;
-//         this.y = y;
-//     }
-// }
+//	public boolean backwardChaining(String goal, List<String> facts) {
+//		if (facts.contains(goal)) {
+//			return true;
+//		}
 //
-// class PositionInTimeBoolean
-////  Action a = Action.NOOP;
-////  if (p == Perception.BOMB_BEEP) {
-////   a = Action.GRAB;
-////  } else if (p == Perception.WALL_BEEP) {
-////   a = Action.TURN_RIGHT;
-////  } else if (p == Perception.BOMB_TILE) {
-////   a = Action.GO_FORWARD;
-////  } else if (p == Perception.BUMP) {
-////   a = Action.TURN_LEFT;
-////  }
-////  return a;
-//// }
+//		for (Rule rule : rules) {
+//			if (rule.applies(facts) && backwardChaining(rule.getConclusion(), facts)) {
+//				return true;
+//			}
+//		}
+//
+//		return false;
+//	}
+//
+//	public List<Formula> getFormulasByPredicateType(PredicateType predicateType){
+//		return formulas
+//			.stream()
+//			.filter(formula -> (formula.getType().equals(FormulaType.ATOM) && formula.containsPredicate(predicateType)))
+//			.collect(Collectors.toList());
+//	}
+//
+//	public void tell(String formulaLine) {
+//		formulas.add(FormulaParser.parseFormulaLine(formulaLine));
+//	}
+//
+//	public void readFormulas(String filePath) throws IOException {
+//		InputManager inputManager = new InputManager();
+//		try {
+//			inputManager.openFileForReading(filePath);
+//			formulas = inputManager.readLines()
+//				.map(formulaLine -> FormulaParser.parseFormulaLine(formulaLine)).collect(Collectors.toList());
+//			inputManager.finishReading();
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//	}
+//
 //}
